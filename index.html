@@ -1,364 +1,125 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Barqat - FMCG Order Management Platform. Download the app now.">
-    <title>Barqat - FMCG Order Management Platform</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barqat App</title>
 
-        :root {
-            --primary-green: #00B14F;
-            --secondary-green: #00A859;
-            --maize-yellow: #FFD166;
-            --charcoal: #1F2933;
-            --light-gray: #F3F4F6;
-            --gray: #666666;
-            --border-gray: #E5E7EB;
-            --white: #FFFFFF;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--white);
-            color: var(--charcoal);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 32px 24px;
-        }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+        background: #ffffff;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+    .container {
+        max-width: 420px;
+        width: 100%;
+    }
 
-        /* Branding Section */
-        .branding {
-            margin-bottom: 40px;
-        }
+    .app-icon {
+        width: 90px;
+        height: 90px;
+        background: #00B14F;
+        border-radius: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 20px;
+    }
 
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary-green);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 20px rgba(0, 177, 79, 0.3);
-        }
+    .app-icon span {
+        font-size: 48px;
+        font-weight: bold;
+        color: #fff;
+    }
 
-        .app-icon-text {
-            font-size: 48px;
-            font-weight: bold;
-            color: var(--white);
-        }
+    .title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
 
-        .app-name {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--charcoal);
-            letter-spacing: 1.2px;
-            margin-bottom: 8px;
-        }
+    .tagline {
+        font-size: 16px;
+        color: #777;
+        margin-bottom: 26px;
+    }
 
-        .tagline {
-            font-size: 14px;
-            color: var(--gray);
-            font-weight: 400;
-        }
+    /* QR */
+    .qr-box {
+        padding: 16px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        width: fit-content;
+        margin: 0 auto 30px;
+    }
 
-        /* Design Section */
-        .design-section {
-            width: 80%;
-            max-width: 400px;
-            aspect-ratio: 1;
-            position: relative;
-            margin: 40px auto;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(229, 231, 235, 0.5);
-        }
+    .qr-box img {
+        width: 200px;
+        height: 200px;
+    }
 
-        .design-gradient {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 50%, var(--maize-yellow) 100%);
-            position: relative;
-        }
+    /* Button */
+    .download-btn {
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        padding: 16px;
+        background: linear-gradient(to right, #007bff, #ff7a18);
+        text-decoration: none;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
+        border-radius: 14px;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        transition: 0.2s ease;
+    }
 
-        .design-circle-1 {
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 60%;
-            height: 60%;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-        }
+    .download-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
 
-        .design-circle-2 {
-            position: absolute;
-            bottom: -15%;
-            left: -10%;
-            width: 50%;
-            height: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-        }
-
-        .design-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-        }
-
-        .design-icon-wrapper {
-            width: 120px;
-            height: 120px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 20px rgba(31, 41, 51, 0.2);
-            margin-bottom: 16px;
-        }
-
-        .design-icon {
-            width: 48px;
-            height: 48px;
-            color: var(--primary-green);
-        }
-
-        .design-text-1 {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--white);
-            text-shadow: 0 2px 8px rgba(31, 41, 51, 0.3);
-            margin-bottom: 4px;
-        }
-
-        .design-text-2 {
-            font-size: 16px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 2px 6px rgba(31, 41, 51, 0.2);
-        }
-
-        /* Download Button */
-        .download-button {
-            width: 100%;
-            max-width: 320px;
-            height: 56px;
-            background-color: var(--primary-green);
-            color: var(--white);
-            border: none;
-            border-radius: 16px;
-            font-size: 16px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 16px rgba(0, 177, 79, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin: 40px 0;
-            text-decoration: none;
-        }
-
-        .download-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 177, 79, 0.5);
-        }
-
-        .download-button:active {
-            transform: translateY(0);
-        }
-
-        .download-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Footer */
-        .footer {
-            font-size: 12px;
-            color: var(--gray);
-            font-weight: 400;
-            margin-top: 40px;
-        }
-
-        /* Responsive Design */
-        @media (min-width: 600px) {
-            body {
-                padding: 48px;
-            }
-
-            .app-icon {
-                width: 120px;
-                height: 120px;
-                border-radius: 28px;
-                margin-bottom: 24px;
-            }
-
-            .app-icon-text {
-                font-size: 72px;
-            }
-
-            .app-name {
-                font-size: 48px;
-                margin-bottom: 12px;
-            }
-
-            .tagline {
-                font-size: 18px;
-            }
-
-            .design-section {
-                border-radius: 32px;
-                margin: 60px auto;
-            }
-
-            .design-icon-wrapper {
-                width: 160px;
-                height: 160px;
-                margin-bottom: 24px;
-            }
-
-            .design-icon {
-                width: 64px;
-                height: 64px;
-            }
-
-            .design-text-1 {
-                font-size: 28px;
-                margin-bottom: 8px;
-            }
-
-            .design-text-2 {
-                font-size: 20px;
-            }
-
-            .download-button {
-                height: 64px;
-                font-size: 18px;
-                border-radius: 20px;
-                margin: 60px 0;
-            }
-
-            .footer {
-                font-size: 14px;
-                margin-top: 60px;
-            }
-        }
-
-        /* Shopping Cart Icon SVG */
-        .shopping-cart-icon {
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-    </style>
+    .footer {
+        font-size: 13px;
+        color: #888;
+        margin-top: 28px;
+    }
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Branding Section -->
-        <div class="branding">
-            <div class="app-icon">
-                <span class="app-icon-text">B</span>
-            </div>
-            <h1 class="app-name">Barqat</h1>
-            <p class="tagline">FMCG Order Management Platform</p>
-        </div>
+<div class="container">
 
-        <!-- Design Section -->
-        <div class="design-section">
-            <div class="design-gradient">
-                <div class="design-circle-1"></div>
-                <div class="design-circle-2"></div>
-                <div class="design-content">
-                    <div class="design-icon-wrapper">
-                        <svg class="design-icon shopping-cart-icon" viewBox="0 0 24 24">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                        </svg>
-                    </div>
-                    <div class="design-text-1">Order Smart</div>
-                    <div class="design-text-2">Deliver Fast</div>
-                </div>
-            </div>
-        </div>
+    <div class="app-icon"><span>B</span></div>
 
-        <!-- Download Button -->
-        <a href="#" id="downloadBtn" class="download-button" onclick="handleDownload(event)">
-            <svg class="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-            </svg>
-            <span>Download the App</span>
-        </a>
+    <div class="title">Barqat</div>
+    <div class="tagline">FMCG Order Management Platform</div>
 
-        <!-- Footer -->
-        <div class="footer">
-            Built with ❤️ by Barqat Team
-        </div>
+    <div class="qr-box">
+        <!-- Replace with your generated QR -->
+        <img src="qr.png" alt="QR Code">
     </div>
 
-    <script>
-        // APK download URL - Update this with your actual APK URL
-        const APK_URL = 'https://your-apk-download-url.com/app.apk';
+    <a href="YOUR_APK_LINK_HERE" class="download-btn">Download the App</a>
 
-        // Handle download button click
-        function handleDownload(event) {
-            event.preventDefault();
-            
-            // Try to open the download link
-            try {
-                window.open(APK_URL, '_blank');
-            } catch (error) {
-                alert('Unable to open download link. Please check your browser settings.');
-                console.error('Download error:', error);
-            }
-        }
+    <div class="footer">Built with ❤️ by Barqat Team</div>
 
-        // Optional: Get APK URL from query parameter
-        window.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const apkUrl = urlParams.get('apkUrl');
-            
-            if (apkUrl) {
-                // Update download button href if URL is provided via query parameter
-                document.getElementById('downloadBtn').onclick = function(e) {
-                    e.preventDefault();
-                    window.open(apkUrl, '_blank');
-                };
-            }
-        });
-    </script>
+</div>
 </body>
 </html>
