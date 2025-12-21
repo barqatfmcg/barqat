@@ -269,13 +269,16 @@
             background: white;
             padding: 2rem;
             border-radius: 12px;
-            border-left: 4px solid var(--yellow);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
+            border: 1px solid var(--border-gray);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--yellow);
         }
 
         .problem-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            border-color: var(--border-gray);
         }
 
         .problem-card h3 {
@@ -302,17 +305,19 @@
         }
 
         .solution-card {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            background: white;
             padding: 2.5rem 2rem;
             border-radius: 12px;
             text-align: center;
-            border-top: 3px solid var(--primary-green);
+            border: 1px solid var(--border-gray);
+            border-top: 2px solid var(--primary-green);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             transition: all 0.3s ease;
         }
 
         .solution-card:hover {
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
-            box-shadow: 0 10px 30px rgba(0, 177, 79, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 177, 79, 0.12);
+            transform: translateY(-2px);
         }
 
         .solution-icon {
@@ -583,28 +588,15 @@
                 </div>
 
                 <div class="trust-text">
-                    ✓ Used by 500+ retailers across Pakistan<br>
                     ✓ 99.9% uptime guarantee<br>
-                    ✓ Enterprise-grade security
+                    ✓ Enterprise-grade security<br>
+                    ✓ Trusted by retailers in Pakistan
                 </div>
             </div>
 
             <div class="hero-qr">
                 <div class="qr-box">
-                    <div class="qr-code">
-                        <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
-                            <!-- QR Code Placeholder -->
-                            <rect width="100" height="100" fill="white"/>
-                            <g fill="black">
-                                <rect x="10" y="10" width="30" height="30"/>
-                                <rect x="60" y="10" width="30" height="30"/>
-                                <rect x="10" y="60" width="30" height="30"/>
-                                <rect x="20" y="20" width="8" height="8" fill="white"/>
-                                <rect x="70" y="20" width="8" height="8" fill="white"/>
-                                <rect x="20" y="70" width="8" height="8" fill="white"/>
-                            </g>
-                        </svg>
-                    </div>
+                    <img src="qr.png" alt="Barqat App QR Code" style="width: 240px; height: 240px; border-radius: 8px;">
                     <div class="qr-label">Scan to Download<br>Android & iOS</div>
                 </div>
             </div>
@@ -717,12 +709,12 @@
                     <p>We've deployed our platform across hundreds of retail locations, helping businesses of all sizes streamline operations and scale confidently.</p>
 
                     <ul class="about-features">
-                        <li>500+ active retailers trust Barqat</li>
                         <li>99.9% platform uptime</li>
                         <li>Real-time GPS tracking</li>
                         <li>Multi-language support (Urdu & English)</li>
                         <li>24/7 customer support</li>
                         <li>Enterprise-grade infrastructure</li>
+                        <li>Secure data handling & encryption</li>
                     </ul>
                 </div>
 
@@ -853,8 +845,8 @@
 
         <div class="footer-bottom">
             <div class="footer-legal">
-                <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>
-                <a href="/terms-of-service.html" target="_blank">Terms of Service</a>
+                <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+                <a href="/terms-of-service" target="_blank">Terms of Service</a>
                 <a href="#">Cookie Policy</a>
             </div>
             <p>&copy; 2025 Barqat. All rights reserved. | Smart Retail Made Simple</p>
