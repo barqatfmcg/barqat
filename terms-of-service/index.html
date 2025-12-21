@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barqat - Terms of Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #00B14F;
+            --secondary-green: #00A859;
+            --yellow-accent: #FFD166;
+            --charcoal: #1F2933;
+            --light-gray: #F3F4F6;
+            --gray: #666666;
+            --border-gray: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 177, 79, 0.15);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--yellow-accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: 800;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: opacity 0.3s ease;
+            opacity: 0.9;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 209, 102, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .toc {
+            background: var(--light-gray);
+            border-left: 4px solid var(--primary-green);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .toc h2 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            columns: 2;
+            column-gap: 2rem;
+        }
+
+        .toc li {
+            margin: 0.5rem 0;
+            break-inside: avoid;
+        }
+
+        .toc a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--secondary-green);
+            text-decoration: underline;
+        }
+
+        section {
+            margin: 3rem 0;
+        }
+
+        section h2 {
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--yellow-accent);
+            display: inline-block;
+        }
+
+        section h3 {
+            color: var(--charcoal);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section h4 {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 177, 79, 0.05) 0%, rgba(0, 168, 89, 0.05) 100%);
+            border-left: 4px solid var(--primary-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box.important {
+            border-left-color: #FF6B6B;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(255, 107, 107, 0.02) 100%);
+        }
+
+        .highlight-box h4 {
+            color: var(--primary-green);
+            margin-top: 0;
+        }
+
+        .highlight-box.important h4 {
+            color: #FF6B6B;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        table thead {
+            background: var(--light-gray);
+            border-bottom: 2px solid var(--primary-green);
+        }
+
+        table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        table tbody tr:hover {
+            background: var(--light-gray);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item label {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--yellow-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-green);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #AAAAAA;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-gray);
+            padding-top: 2rem;
+            text-align: center;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .toc ul {
+                columns: 1;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">B</span>
+                Barqat
+            </div>
+            <nav>
+                <a href="#user-accounts">User Accounts</a>
+                <a href="#usage-rights">Usage Rights</a>
+                <a href="#restrictions">Restrictions</a>
+                <a href="#support">Support</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Terms of Service</h1>
+            <p>Your Agreement to Use Barqat</p>
+            <p class="last-updated">Last Updated: December 19, 2025 | Effective: December 19, 2025</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📋 Quick Navigation</h2>
+            <ul>
+                <li><a href="#acceptance">Acceptance of Terms</a></li>
+                <li><a href="#definitions">Definitions</a></li>
+                <li><a href="#user-accounts">User Accounts</a></li>
+                <li><a href="#usage-rights">Usage Rights & License</a></li>
+                <li><a href="#restrictions">Prohibited Activities</a></li>
+                <li><a href="#intellectual">Intellectual Property</a></li>
+                <li><a href="#liability">Limitation of Liability</a></li>
+                <li><a href="#dispute">Dispute Resolution</a></li>
+                <li><a href="#termination">Termination</a></li>
+                <li><a href="#modifications">Modifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Acceptance -->
+        <section id="acceptance">
+            <h2>1. Acceptance of Terms</h2>
+            
+            <p>Welcome to <strong>Barqat</strong> ("Company," "we," "us," "our," or "Service"). These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Barqat governing your access to and use of our mobile application, website, and associated services (collectively, the "Service").</p>
+
+            <p><strong>By accessing, downloading, installing, or using the Service in any way, you acknowledge that you have read, understood, and agree to be bound by all provisions of these Terms.</strong></p>
+
+            <div class="highlight-box important">
+                <h4>⚠️ Important</h4>
+                <p>If you do not agree to these Terms in their entirety, you are not authorized to use the Service, and you must discontinue use immediately. Your continued use of the Service constitutes acceptance of any modifications to these Terms.</p>
+            </div>
+
+            <h3>1.1 Legal Authority</h3>
+            <p>By using this Service, you represent and warrant that:</p>
+            <ul>
+                <li>You are at least 18 years old or the minimum age required in your jurisdiction</li>
+                <li>You are legally capable of entering into binding contracts</li>
+                <li>You are not a person or entity prohibited from using the Service under applicable laws</li>
+                <li>All information you provide is accurate and truthful</li>
+            </ul>
+        </section>
+
+        <!-- Section 2: Definitions -->
+        <section id="definitions">
+            <h2>2. Key Definitions</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Account</strong></td>
+                        <td>Your unique user profile created for accessing the Service</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Content</strong></td>
+                        <td>All text, images, videos, data, and materials on the Service</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Barqat Content</strong></td>
+                        <td>Content owned by, licensed to, or created by Barqat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User Content</strong></td>
+                        <td>Content you create, upload, or submit through the Service</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transaction</strong></td>
+                        <td>Any order, purchase, or commercial activity on the Service</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Service</strong></td>
+                        <td>The Barqat application, website, and all related features</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 3: User Accounts -->
+        <section id="user-accounts">
+            <h2>3. User Accounts & Registration</h2>
+
+            <h3>3.1 Account Creation</h3>
+            <p>To use certain features of the Service, you must create an account by providing:</p>
+            <ul>
+                <li>Valid phone number (for OTP verification)</li>
+                <li>Full name</li>
+                <li>Email address</li>
+                <li>Business details (if applicable)</li>
+                <li>Additional information as requested</li>
+            </ul>
+
+            <h3>3.2 Account Responsibility</h3>
+            <p>You are solely responsible for:</p>
+            <ul>
+                <li>Maintaining the confidentiality of your login credentials</li>
+                <li>All activities that occur under your account</li>
+                <li>Notifying us immediately of unauthorized access</li>
+                <li>Complying with all applicable laws in your use of the Service</li>
+            </ul>
+
+            <p><strong>Important</strong>: Barqat is not liable for any loss or damage resulting from your failure to protect your password or account.</p>
+
+            <h3>3.3 Account Suspension & Termination</h3>
+            <p>We reserve the right to suspend or terminate your account if:</p>
+            <ul>
+                <li>You violate these Terms</li>
+                <li>You engage in fraud or illegal activity</li>
+                <li>You abuse the Service or other users</li>
+                <li>Payment is not received or is declined repeatedly</li>
+                <li>You provide false or misleading information</li>
+            </ul>
+
+            <h3>3.4 Account Closure</h3>
+            <p>You may request account closure at any time. Upon closure:</p>
+            <ul>
+                <li>Your account will be deactivated</li>
+                <li>You will lose access to any pending orders or benefits</li>
+                <li>Your personal data will be handled per our Privacy Policy</li>
+                <li>Some data may be retained for legal/financial purposes</li>
+            </ul>
+        </section>
+
+        <!-- Section 4: Usage Rights -->
+        <section id="usage-rights">
+            <h2>4. Usage Rights & License</h2>
+
+            <h3>4.1 Limited License</h3>
+            <p>Subject to your compliance with these Terms and applicable laws, Barqat grants you a limited, non-exclusive, non-transferable, revocable license to:</p>
+            <ul>
+                <li>Access and use the Service for its intended purpose</li>
+                <li>Download the application to your personal device</li>
+                <li>Store a local copy of Content for personal, non-commercial use</li>
+            </ul>
+
+            <h3>4.2 License Restrictions</h3>
+            <p>Your license does NOT permit you to:</p>
+            <ul>
+                <li>Modify or alter the Service or Content</li>
+                <li>Reverse engineer, decompile, or disassemble the Service</li>
+                <li>Remove copyright notices or attribution</li>
+                <li>Use the Service for commercial purposes (unless authorized)</li>
+                <li>Sublicense or transfer your rights to others</li>
+                <li>Use the Service on unlicensed or modified devices</li>
+            </ul>
+
+            <h3>4.3 Intellectual Property Rights</h3>
+            <p>All Barqat Content is protected by copyright, trademark, and other intellectual property laws. All rights are reserved unless expressly granted in writing.</p>
+        </section>
+
+        <!-- Section 5: Prohibited Activities -->
+        <section id="restrictions">
+            <h2>5. Prohibited Activities</h2>
+
+            <p>You agree NOT to:</p>
+
+            <h3>5.1 Illegal Activities</h3>
+            <ul>
+                <li>Violate any federal, state, local, or international law</li>
+                <li>Engage in fraud, scams, or deceptive practices</li>
+                <li>Provide false identity or business information</li>
+                <li>Money laundering or financial crimes</li>
+                <li>Any activity that would constitute a criminal offense</li>
+            </ul>
+
+            <h3>5.2 Intellectual Property Violations</h3>
+            <ul>
+                <li>Infringe on patents, copyrights, trademarks, or trade secrets</li>
+                <li>Use Content without proper authorization</li>
+                <li>Create competing services using our Content</li>
+                <li>Plagiarize or misattribute Content</li>
+            </ul>
+
+            <h3>5.3 Technical Violations</h3>
+            <ul>
+                <li>Hack, crack, or attempt unauthorized access</li>
+                <li>Create bots, scrapers, or automated tools</li>
+                <li>Bypass security measures or restrictions</li>
+                <li>Interfere with server functionality</li>
+                <li>Denial-of-service attacks</li>
+            </ul>
+
+            <h3>5.4 Abusive Behavior</h3>
+            <ul>
+                <li>Harassment, bullying, or threats toward other users</li>
+                <li>Hate speech or discriminatory content</li>
+                <li>Spam, unsolicited marketing, or bulk messaging</li>
+                <li>Defamatory or false statements</li>
+                <li>Sexual exploitation or abuse content</li>
+            </ul>
+
+            <h3>5.5 Commercial Violations</h3>
+            <ul>
+                <li>Resale or redistribution of the Service</li>
+                <li>Price manipulation or market manipulation</li>
+                <li>Unfair competition or tortious interference</li>
+                <li>Collusion with other sellers to fix prices</li>
+                <li>Multi-level marketing or pyramid schemes</li>
+            </ul>
+
+            <div class="highlight-box important">
+                <h4>⚠️ Enforcement</h4>
+                <p>Violation of prohibited activities may result in immediate account suspension, legal action, and/or law enforcement referral.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Intellectual Property -->
+        <section id="intellectual">
+            <h2>6. Intellectual Property Rights</h2>
+
+            <h3>6.1 Ownership</h3>
+            <p><strong>Barqat retains all ownership and intellectual property rights to:</strong></p>
+            <ul>
+                <li>The Service and all features</li>
+                <li>Logo, branding, and trademarks</li>
+                <li>Software code and algorithms</li>
+                <li>Documentation and written materials</li>
+                <li>Product descriptions and photographs</li>
+                <li>Any Content created by Barqat or its licensors</li>
+            </ul>
+
+            <h3>6.2 User Content</h3>
+            <p>You retain ownership of User Content you create. However, by submitting User Content, you grant Barqat a:</p>
+            <ul>
+                <li>Worldwide, royalty-free, non-exclusive license to use, copy, modify, and display your User Content</li>
+                <li>Right to use your content for platform improvement and moderation</li>
+                <li>Right to publicly display content (reviews, ratings, etc.)</li>
+            </ul>
+
+            <h3>6.3 Limited Reproduction</h3>
+            <p>Users may:</p>
+            <ul>
+                <li>Print or save pages for personal, non-commercial use</li>
+                <li>Make excerpts for review or commentary</li>
+                <li>Share links to the Service</li>
+            </ul>
+
+            <p><strong>Unauthorized copying, distribution, or modification of Content is prohibited.</strong></p>
+        </section>
+
+        <!-- Section 7: Limitation of Liability -->
+        <section id="liability">
+            <h2>7. Limitation of Liability</h2>
+
+            <h3>7.1 "AS-IS" Disclaimer</h3>
+            <p><strong>THE SERVICE IS PROVIDED "AS-IS" AND "AS-AVAILABLE"</strong> without any warranties, express or implied. Barqat disclaims all warranties including:</p>
+            <ul>
+                <li>Merchantability or fitness for a particular purpose</li>
+                <li>Non-infringement of third-party rights</li>
+                <li>Uninterrupted, error-free, or secure operation</li>
+                <li>Accuracy or completeness of Content</li>
+            </ul>
+
+            <h3>7.2 Limitation of Damages</h3>
+            <p><strong>IN NO EVENT SHALL BARQAT BE LIABLE FOR:</strong></p>
+            <ul>
+                <li>Indirect, incidental, special, or consequential damages</li>
+                <li>Loss of profits, revenue, data, or business opportunities</li>
+                <li>Lost goodwill or reputational harm</li>
+                <li>Even if advised of the possibility of such damages</li>
+            </ul>
+
+            <h3>7.3 Liability Cap</h3>
+            <p><strong>Barqat's total liability shall not exceed the amount you paid to Barqat in the 12 months preceding the claim.</strong></p>
+
+            <h3>7.4 Exceptions</h3>
+            <p>These limitations do not apply to:</p>
+            <ul>
+                <li>Personal injury or death claims</li>
+                <li>Fraudulent or willful misconduct by Barqat</li>
+                <li>Violations of law that cannot be waived</li>
+                <li>Liability that cannot be limited by applicable law</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>📌 Note</h4>
+                <p>Some jurisdictions do not allow limitations of liability. To the extent permitted by law, these limitations apply to the fullest extent possible.</p>
+            </div>
+        </section>
+
+        <!-- Section 8: Dispute Resolution -->
+        <section id="dispute">
+            <h2>8. Dispute Resolution</h2>
+
+            <h3>8.1 Informal Resolution</h3>
+            <p>Before initiating formal proceedings, you agree to:</p>
+            <ol>
+                <li>Contact us with a detailed written description of the dispute</li>
+                <li>Allow 30 days for Barqat to respond</li>
+                <li>Attempt good-faith negotiation to resolve the dispute</li>
+                <li>Email: legal@barqat.app</li>
+            </ol>
+
+            <h3>8.2 Governing Law</h3>
+            <p>These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to conflict of law principles.</p>
+
+            <h3>8.3 Arbitration</h3>
+            <p>You and Barqat agree to resolve disputes through binding arbitration rather than court proceedings, except:</p>
+            <ul>
+                <li>Small claims court disputes (if available)</li>
+                <li>IP infringement claims</li>
+                <li>Enforcement of arbitration awards</li>
+            </ul>
+
+            <h3>8.4 Class Action Waiver</h3>
+            <p><strong>YOU WAIVE YOUR RIGHT TO PARTICIPATE IN CLASS ACTIONS OR CLASS ARBITRATIONS.</strong> All disputes must be resolved individually.</p>
+
+            <h3>8.5 Jurisdiction & Venue</h3>
+            <p>Any legal action not subject to arbitration shall be filed exclusively in courts located in [Your Jurisdiction].</p>
+        </section>
+
+        <!-- Section 9: Termination -->
+        <section id="termination">
+            <h2>9. Termination & Suspension</h2>
+
+            <h3>9.1 Termination by You</h3>
+            <p>You may terminate these Terms at any time by:</p>
+            <ul>
+                <li>Deleting the Service from your device</li>
+                <li>Requesting account closure via support@barqat.app</li>
+                <li>Ceasing use of the Service</li>
+            </ul>
+
+            <h3>9.2 Termination by Barqat</h3>
+            <p>Barqat may terminate or suspend your account immediately for:</p>
+            <ul>
+                <li>Violation of these Terms</li>
+                <li>Illegal activity or fraud</li>
+                <li>Non-payment of fees</li>
+                <li>Abuse of the Service</li>
+                <li>Any violation of this Agreement</li>
+            </ul>
+
+            <h3>9.3 Effect of Termination</h3>
+            <p>Upon termination:</p>
+            <ul>
+                <li>Your right to use the Service immediately ceases</li>
+                <li>You must delete the Service from your devices</li>
+                <li>Survival clauses remain in effect (Limitation of Liability, Indemnification, etc.)</li>
+                <li>Outstanding obligations must still be fulfilled</li>
+            </ul>
+
+            <h3>9.4 Survival</h3>
+            <p>The following sections survive termination: IP Rights, Limitation of Liability, Indemnification, Dispute Resolution, and Governing Law.</p>
+        </section>
+
+        <!-- Section 10: Modifications -->
+        <section id="modifications">
+            <h2>10. Modifications to Terms</h2>
+
+            <h3>10.1 Right to Modify</h3>
+            <p>Barqat reserves the right to modify these Terms at any time. Changes are effective:</p>
+            <ul>
+                <li>Immediately upon posting (for non-material changes)</li>
+                <li>With 30 days notice (for material changes)</li>
+                <li>As required by law (immediately)</li>
+            </ul>
+
+            <h3>10.2 Your Notification</h3>
+            <p>We will notify you of material changes via:</p>
+            <ul>
+                <li>In-app notification</li>
+                <li>Email notification</li>
+                <li>Updated Terms posted on the Service</li>
+            </ul>
+
+            <h3>10.3 Continued Use</h3>
+            <p><strong>Your continued use of the Service after changes constitute acceptance of the modified Terms.</strong></p>
+
+            <h3>10.4 Service Modifications</h3>
+            <p>Barqat may modify, suspend, or discontinue the Service or any features at any time with reasonable notice.</p>
+        </section>
+
+        <!-- Section 11: Additional Terms -->
+        <section>
+            <h2>11. Payment & Refunds</h2>
+
+            <h3>11.1 Payment Terms</h3>
+            <ul>
+                <li>All prices displayed are in [Your Currency] unless otherwise stated</li>
+                <li>Payment must be made via approved payment methods</li>
+                <li>You authorize charges on your payment method</li>
+                <li>All sales are final unless otherwise specified</li>
+            </ul>
+
+            <h3>11.2 Taxes</h3>
+            <p>You are responsible for any applicable taxes. Barqat will collect and remit taxes as required by law.</p>
+
+            <h3>11.3 Refunds</h3>
+            <ul>
+                <li>Refund requests must be submitted within 30 days of purchase</li>
+                <li>Refunds are processed within 5-10 business days</li>
+                <li>Refunds are issued to the original payment method</li>
+                <li>Barqat reserves the right to deny refunds for abuse</li>
+            </ul>
+        </section>
+
+        <!-- Section 12: Indemnification -->
+        <section>
+            <h2>12. Indemnification</h2>
+
+            <p>You agree to indemnify and hold harmless Barqat, its officers, directors, employees, and agents from any claims, damages, losses, and expenses (including legal fees) arising from:</p>
+            <ul>
+                <li>Your use of the Service</li>
+                <li>Your violation of these Terms</li>
+                <li>Your violation of any law or third-party rights</li>
+                <li>Your User Content or submissions</li>
+                <li>Your breach of representations and warranties</li>
+            </ul>
+        </section>
+
+        <!-- Section 13: General Provisions -->
+        <section>
+            <h2>13. General Provisions</h2>
+
+            <h3>13.1 Entire Agreement</h3>
+            <p>These Terms, along with our Privacy Policy, constitute the entire agreement between you and Barqat regarding the Service.</p>
+
+            <h3>13.2 Severability</h3>
+            <p>If any provision is found to be invalid or unenforceable, the remaining provisions remain in full effect.</p>
+
+            <h3>13.3 Waiver</h3>
+            <p>Failure to enforce any right does not constitute a waiver of that right.</p>
+
+            <h3>13.4 Assignment</h3>
+            <p>You may not assign these Terms or your rights. Barqat may assign these Terms to any successor.</p>
+
+            <h3>13.5 Notices</h3>
+            <p>Legal notices must be sent to: legal@barqat.app</p>
+
+            <h3>13.6 No Third-Party Beneficiaries</h3>
+            <p>These Terms are between you and Barqat only. No third party has any rights hereunder.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Have Questions?</h2>
+            <div class="contact-box">
+                <h3>Contact Our Legal Team</h3>
+                <p>If you have questions about these Terms, please reach out to us.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <label>📧 Email</label>
+                        <a href="mailto:legal@barqat.app">legal@barqat.app</a>
+                    </div>
+                    <div class="contact-item">
+                        <label>📞 Support</label>
+                        <a href="mailto:support@barqat.app">support@barqat.app</a>
+                    </div>
+                    <div class="contact-item">
+                        <label>🌐 Website</label>
+                        <a href="https://barqat.app">barqat.app</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acknowledgment -->
+        <section>
+            <h2>Acknowledgment</h2>
+            <div class="highlight-box">
+                <h4>✅ Your Understanding</h4>
+                <p><strong>By using Barqat, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service in their entirety.</strong> Your use of the Service constitutes acceptance of all provisions contained herein.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Barqat</h4>
+                    <p>Barqat is a modern FMCG order management platform designed for retailers, distributors, and delivery partners.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#user-accounts">User Accounts</a>
+                    <a href="#usage-rights">Usage Rights</a>
+                    <a href="#restrictions">Prohibited Activities</a>
+                    <a href="#dispute">Dispute Resolution</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="/privacy-policy.html">Privacy Policy</a>
+                    <a href="/terms-of-service.html">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="mailto:legal@barqat.app">Legal Inquiry</a>
+                    <a href="mailto:support@barqat.app">General Support</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Barqat FMCG. All rights reserved. | Terms of Service v1.0 | Updated: December 21, 2025</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">By accessing this service, you accept these Terms of Service and our Privacy Policy.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
