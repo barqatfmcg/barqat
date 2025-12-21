@@ -1,125 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barqat App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barqat - Smart Order Tracking for Retailers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        :root {
+            --primary-green: #00B14F;
+            --secondary-green: #00A859;
+            --yellow: #FFD166;
+            --charcoal: #1F2933;
+            --light-gray: #F3F4F6;
+            --white: #FFFFFF;
+            --text-gray: #666666;
+            --border-gray: #E5E7EB;
+        }
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-        background: #ffffff;
-        color: #333;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        text-align: center;
-        padding: 20px;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
 
-    .container {
-        max-width: 420px;
-        width: 100%;
-    }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
 
-    .app-icon {
-        width: 90px;
-        height: 90px;
-        background: #00B14F;
-        border-radius: 22px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto 20px;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .app-icon span {
-        font-size: 48px;
-        font-weight: bold;
-        color: #fff;
-    }
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    .title {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 6px;
-    }
+        nav a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-    .tagline {
-        font-size: 16px;
-        color: #777;
-        margin-bottom: 26px;
-    }
+        nav a:hover {
+            color: var(--primary-green);
+        }
 
-    /* QR */
-    .qr-box {
-        padding: 16px;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-        width: fit-content;
-        margin: 0 auto 30px;
-    }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+        }
 
-    .qr-box img {
-        width: 200px;
-        height: 200px;
-    }
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            display: flex;
+            align-items: center;
+            padding: 3rem 2rem;
+            overflow: hidden;
+        }
 
-    /* Button */
-    .download-btn {
-        display: block;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-        padding: 16px;
-        background: linear-gradient(to right, #007bff, #ff7a18);
-        text-decoration: none;
-        color: #fff;
-        font-size: 17px;
-        font-weight: 600;
-        border-radius: 14px;
-        box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-        transition: 0.2s ease;
-    }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
 
-    .download-btn:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-    }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
 
-    .footer {
-        font-size: 13px;
-        color: #888;
-        margin-top: 28px;
-    }
-</style>
+        .hero-text h1 span {
+            color: var(--primary-green);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 177, 79, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 177, 79, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .trust-text {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 1rem;
+        }
+
+        .hero-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .qr-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--light-gray);
+        }
+
+        .qr-code {
+            width: 240px;
+            height: 240px;
+            background: white;
+            border: 3px solid var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            border-radius: 8px;
+        }
+
+        .qr-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .qr-code {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--yellow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-card h3 {
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .problem-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: white;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border-top: 3px solid var(--primary-green);
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            box-shadow: 0 10px 30px rgba(0, 177, 79, 0.15);
+        }
+
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card h3 {
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .solution-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+        }
+
+        .about .section-title h2,
+        .about .section-title p {
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--yellow);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-features li:before {
+            content: "✓";
+            color: var(--yellow);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .about-image {
+            background: rgba(255, 255, 255, 0.1);
+            height: 300px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--light-gray);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--charcoal);
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light-gray);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: var(--light-gray);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--yellow);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-legal {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Utility */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-green), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: slideInUp 0.6s ease-out;
+        }
+    </style>
 </head>
-
 <body>
-<div class="container">
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Barqat</div>
+        <ul>
+            <li><a href="#problem">Problem</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
 
-    <div class="app-icon"><span>B</span></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Smart Order Tracking for <span>Modern Retailers</span></h1>
+                <p>Real-time order management, GPS tracking, and instant notifications. Streamline your retail operations with Barqat.</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Download Now</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
 
-    <div class="title">Barqat</div>
-    <div class="tagline">Your Smart FMCG Ordering Partner</div>
+                <div class="trust-text">
+                    ✓ Used by 500+ retailers across Pakistan<br>
+                    ✓ 99.9% uptime guarantee<br>
+                    ✓ Enterprise-grade security
+                </div>
+            </div>
 
-    <div class="qr-box">
-        <!-- Replace with your generated QR -->
-        <img src="qr.png" alt="QR Code">
-    </div>
+            <div class="hero-qr">
+                <div class="qr-box">
+                    <div class="qr-code">
+                        <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+                            <!-- QR Code Placeholder -->
+                            <rect width="100" height="100" fill="white"/>
+                            <g fill="black">
+                                <rect x="10" y="10" width="30" height="30"/>
+                                <rect x="60" y="10" width="30" height="30"/>
+                                <rect x="10" y="60" width="30" height="30"/>
+                                <rect x="20" y="20" width="8" height="8" fill="white"/>
+                                <rect x="70" y="20" width="8" height="8" fill="white"/>
+                                <rect x="20" y="70" width="8" height="8" fill="white"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="qr-label">Scan to Download<br>Android & iOS</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <a href="https://github.com/barqatfmcg/barqat/releases/download/v1.2.0/barqat.apk" class="download-btn">Download the App</a>
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="section">
+            <div class="section-title">
+                <h2>Challenges Retailers Face</h2>
+                <p>Managing retail operations without proper tools is costly, time-consuming, and error-prone</p>
+            </div>
 
-    <div class="footer">Built with ❤️ by Barqat Team</div>
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <h3>📦 No Order Visibility</h3>
+                    <p>Retailers lose track of orders in transit, leading to missed deliveries and customer dissatisfaction.</p>
+                </div>
 
-</div>
+                <div class="problem-card fade-in">
+                    <h3>⏰ Manual Coordination</h3>
+                    <p>Coordinating with multiple riders and employees wastes time and creates communication bottlenecks.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <h3>📊 Limited Analytics</h3>
+                    <p>Without data insights, retailers can't optimize their operations or understand customer behavior.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <h3>💔 Poor Customer Experience</h3>
+                    <p>Customers expect real-time updates. Outdated systems can't deliver this, hurting your brand.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <h3>🔓 Security Risks</h3>
+                    <p>Manual record-keeping and unsecured systems put customer data and business operations at risk.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <h3>📈 Scaling Difficulties</h3>
+                    <p>Current processes break down as your business grows, making expansion costly and complex.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="section">
+            <div class="section-title">
+                <h2>Barqat's <span class="gradient-text">Solution</span></h2>
+                <p>Everything you need to modernize your retail operations in one powerful platform</p>
+            </div>
+
+            <div class="solution-grid">
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">📍</div>
+                    <h3>Real-Time GPS Tracking</h3>
+                    <p>Track every order and rider in real-time with precise location updates. Know exactly where everything is.</p>
+                </div>
+
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">🔔</div>
+                    <h3>Instant Notifications</h3>
+                    <p>Push notifications keep your team and customers informed at every step of the process.</p>
+                </div>
+
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">👥</div>
+                    <h3>Multi-Role Management</h3>
+                    <p>Separate access for retailers, storekeepers, riders, and admins with role-based permissions.</p>
+                </div>
+
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">📊</div>
+                    <h3>Analytics & Insights</h3>
+                    <p>Understand your operations with detailed analytics on orders, performance, and customer behavior.</p>
+                </div>
+
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">🔒</div>
+                    <h3>Bank-Grade Security</h3>
+                    <p>JWT-based authentication, encrypted data storage, and compliance with GDPR & CCPA standards.</p>
+                </div>
+
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Built on modern tech stack with 99.9% uptime guarantee. Experience zero lag, zero downtime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section">
+            <div class="section-title">
+                <h2>About Barqat</h2>
+                <p>Transforming retail operations across Pakistan</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Why Choose Barqat?</h3>
+                    <p>Barqat was built by retail experts who understand the unique challenges of managing orders, logistics, and customer relationships in Pakistan's dynamic market.</p>
+                    
+                    <p>We've deployed our platform across hundreds of retail locations, helping businesses of all sizes streamline operations and scale confidently.</p>
+
+                    <ul class="about-features">
+                        <li>500+ active retailers trust Barqat</li>
+                        <li>99.9% platform uptime</li>
+                        <li>Real-time GPS tracking</li>
+                        <li>Multi-language support (Urdu & English)</li>
+                        <li>24/7 customer support</li>
+                        <li>Enterprise-grade infrastructure</li>
+                    </ul>
+                </div>
+
+                <div class="about-image">
+                    <svg viewBox="0 0 200 200" style="width: 100%; height: 100%; opacity: 0.9;">
+                        <defs>
+                            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:rgba(255,209,102,0.3);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgba(0,177,79,0.3);stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="80" fill="url(#grad)"/>
+                        <path d="M 100 50 L 120 100 L 100 150 L 80 100 Z" stroke="white" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="15" fill="white"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about Barqat</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How much does Barqat cost?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Barqat offers flexible pricing plans based on your business size and needs. We have options for small retailers, medium-sized chains, and enterprise solutions. Contact us for a custom quote tailored to your operations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my data secure?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Barqat uses bank-grade encryption, secure JWT authentication, and follows GDPR and CCPA compliance standards. All data is stored securely on PostgreSQL with regular backups and security audits.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you support both Android and iOS?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Barqat is available on both Android and iOS platforms. We maintain feature parity across both platforms and release updates simultaneously to ensure consistent experiences.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What if I need custom features?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with enterprise clients to implement custom features. Our development team can extend Barqat to fit your specific workflow and business requirements. Contact our sales team to discuss options.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does implementation take?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most retailers are up and running within 2-4 weeks. This includes onboarding, training, data migration, and testing. Our dedicated support team will guide you through every step of the process.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there a free trial available?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a 30-day free trial with full access to all features. No credit card required. Experience Barqat firsthand and see how it can transform your retail operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Barqat</h4>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">Smart order tracking for modern retailers across Pakistan.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#problem">Features</a></li>
+                    <li><a href="#solution">Solutions</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>
+                <a href="/terms-of-service.html" target="_blank">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+            <p>&copy; 2025 Barqat. All rights reserved. | Smart Retail Made Simple</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.problem-card, .solution-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
