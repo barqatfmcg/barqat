@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.barqat.app",
+      "sha256_cert_fingerprints": [
+        "81:A2:EA:59:02:EA:5D:FF:B6:59:C0:2A:34:92:8D:0E:DD:F1:D1:33:B6:B8:2D:43:BD:44:BF:A5:42:8A:31:81"
+      ]
+    }
+  }
+]
