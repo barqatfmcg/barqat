@@ -3,893 +3,2257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barqat - Smart Order Tracking for Retailers</title>
+    <meta name="google-site-verification" content="xOXVzs5maBCvJG-32DNAoo2DD7XLhiK22ZhMvuckx2A" />
+    
+    <title>Barqat | Supply, Sales and Growth for Pakistan's Retailers</title>
+    <meta name="description" content="Barqat connects neighbourhood retailers with authorized FMCG distributors for better prices, reliable supply, and home delivery. Starting in Hayatabad, Peshawar.">
+    <link rel="canonical" href="https://barqat.com.pk/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://barqat.com.pk/">
+    <meta property="og:title" content="Barqat | Supply, Sales and Growth for Pakistan's Retailers">
+    <meta property="og:description" content="Barqat connects neighbourhood retailers with authorized FMCG distributors for better prices, reliable supply, and home delivery. Starting in Hayatabad, Peshawar.">
+    <meta property="og:image" content="https://barqat.com.pk/barqat_logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Barqat | Supply, Sales and Growth for Pakistan's Retailers">
+    <meta name="twitter:description" content="Barqat connects neighbourhood retailers with authorized FMCG distributors for better prices, reliable supply, and home delivery. Starting in Hayatabad, Peshawar.">
+    <meta name="twitter:image" content="https://barqat.com.pk/barqat_logo.png">
+
+    <!-- Favicon using official Barqat logo -->
+    <link rel="icon" type="image/png" href="barqat_logo.png">
+    <link rel="apple-touch-icon" href="barqat_logo.png">
+
+    <!-- Structured Data (JSON-LD Organization Schema) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Barqat",
+      "url": "https://barqat.com.pk",
+      "logo": "https://barqat.com.pk/barqat_logo.png",
+      "description": "Asset-light B2B2C FMCG platform connecting neighbourhood retailers directly with 12 authorized distributors in Pakistan.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hayatabad",
+        "addressRegion": "Peshawar",
+        "addressCountry": "PK"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Hayatabad, Peshawar"
+      },
+      "sameAs": [
+        "https://play.google.com/store/apps/details?id=com.barqat.app"
+      ]
+    }
+    </script>
+
     <style>
+        /* ========================================================
+           BARQAT OFFICIAL BRAND PALETTE
+           ======================================================== */
+        :root {
+            --bg-cream: #F7EBD3;               /* Slide / Page Background */
+            --text-dark-brown: #3D2E14;        /* Headings & Body Text */
+            --primary-olive: #626B3B;          /* Primary Accent */
+            --second-olive-gold: #82792B;      /* Second Accent */
+            --highlight-mustard: #E8AE3C;      /* Highlight Accent */
+            --accent-tan: #CC914D;             /* Fourth Accent / Tan Copper */
+            --card-light-cream: #FBF4E4;       /* Card Fill */
+            --text-white: #FFFFFF;             /* Text on olive & gold cards */
+
+            /* Semantic Mappings */
+            --body-bg: var(--bg-cream);
+            --body-text: var(--text-dark-brown);
+            --heading-text: var(--text-dark-brown);
+            --card-bg: var(--card-light-cream);
+            --card-border: rgba(61, 46, 20, 0.12);
+            --card-border-hover: var(--second-olive-gold);
+            --focus-ring: rgba(98, 107, 59, 0.35);
+            --shadow-warm: 0 4px 18px rgba(61, 46, 20, 0.05);
+            --shadow-warm-hover: 0 10px 26px rgba(61, 46, 20, 0.1);
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', Tahoma, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-green: #00B14F;
-            --secondary-green: #00A859;
-            --yellow: #FFD166;
-            --charcoal: #1F2933;
-            --light-gray: #F3F4F6;
-            --white: #FFFFFF;
-            --text-gray: #666666;
-            --border-gray: #E5E7EB;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--charcoal);
+            font-family: var(--font-family);
+            line-height: 1.65;
+            color: var(--body-text);
+            background-color: var(--body-bg);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        /* Urdu mode support */
+        html[lang="ur"] body {
+            font-family: var(--font-urdu), var(--font-family);
+            direction: rtl;
+            text-align: right;
         }
 
-        .logo {
-            font-size: 1.8rem;
+        /* Utility Layouts */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5.5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.85rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-olive);
+            background: rgba(98, 107, 59, 0.12);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.15rem;
+            border: 1px solid rgba(98, 107, 59, 0.2);
         }
 
-        nav ul {
+        .section-header h2 {
+            font-size: 2.45rem;
+            line-height: 1.25;
+            color: var(--heading-text);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: rgba(61, 46, 20, 0.82);
+            line-height: 1.65;
+        }
+
+        /* Sticky Navigation */
+        header.site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(247, 235, 211, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(61, 46, 20, 0.1);
+            box-shadow: 0 2px 12px rgba(61, 46, 20, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .nav-wrapper {
             display: flex;
-            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            height: 78px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--heading-text);
+        }
+
+        .brand-logo-img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.25s ease;
+        }
+
+        .brand-logo:hover .brand-logo-img {
+            transform: scale(1.05);
+        }
+
+        .brand-text {
+            font-size: 1.65rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--heading-text);
+        }
+
+        .brand-text span {
+            color: var(--primary-olive);
+        }
+
+        nav.nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.85rem;
             list-style: none;
         }
 
-        nav a {
+        nav.nav-links a {
             text-decoration: none;
-            color: var(--charcoal);
+            color: var(--heading-text);
             font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
 
-        nav a:hover {
-            color: var(--primary-green);
+        nav.nav-links a:hover {
+            color: var(--primary-olive);
         }
 
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Language Toggle Button */
+        .lang-btn {
+            background: transparent;
+            border: 1.5px solid rgba(61, 46, 20, 0.2);
+            color: var(--heading-text);
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--primary-olive);
+            color: var(--primary-olive);
+            background: rgba(98, 107, 59, 0.08);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 0.75rem 1.45rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: none;
+            line-height: 1;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background: var(--primary-olive);
+            color: var(--text-white);
+            box-shadow: 0 4px 14px rgba(98, 107, 59, 0.28);
+        }
+
+        .btn-primary:hover {
+            background: #525A31;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(98, 107, 59, 0.38);
+        }
+
+        .btn-secondary {
+            background: var(--card-light-cream);
+            color: var(--heading-text);
+            border: 2px solid var(--second-olive-gold);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-olive);
+            color: var(--primary-olive);
+            background: rgba(98, 107, 59, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .btn-lg {
+            padding: 1rem 1.95rem;
+            font-size: 1.05rem;
+            border-radius: 12px;
+        }
+
+        /* Mobile Hamburger */
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--heading-text);
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
-            display: flex;
-            align-items: center;
-            padding: 3rem 2rem;
-            overflow: hidden;
+            background: linear-gradient(180deg, var(--card-light-cream) 0%, var(--bg-cream) 100%);
+            padding: 4.5rem 0 4rem 0;
+            position: relative;
         }
 
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3.5rem;
             align-items: center;
-            width: 100%;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: var(--charcoal);
+            font-size: 3.35rem;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--heading-text);
+            margin-bottom: 1.35rem;
         }
 
-        .hero-text h1 span {
-            color: var(--primary-green);
+        .hero-text h1 .highlight {
+            color: var(--primary-olive);
+            display: inline;
         }
 
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            line-height: 1.8;
+        .hero-subhead {
+            font-size: 1.25rem;
+            line-height: 1.65;
+            color: rgba(61, 46, 20, 0.82);
+            margin-bottom: 2.25rem;
+            max-width: 630px;
         }
 
-        .hero-buttons {
+        .hero-cta-group {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            align-items: center;
+            gap: 1.25rem;
             flex-wrap: wrap;
+            margin-bottom: 2.5rem;
         }
 
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
+        .trust-strip {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid rgba(61, 46, 20, 0.12);
+        }
+
+        .trust-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--heading-text);
+        }
+
+        .trust-dot {
+            width: 9px;
+            height: 9px;
+            background: var(--highlight-mustard);
+            border-radius: 50%;
             display: inline-block;
+            box-shadow: 0 0 6px rgba(232, 174, 60, 0.5);
+        }
+
+        /* Hero QR Card */
+        .hero-qr-card {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 22px;
+            padding: 2.25rem 2rem;
+            box-shadow: var(--shadow-warm);
             text-align: center;
+            max-width: 350px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .btn-primary {
-            background: var(--primary-green);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 177, 79, 0.3);
+        .hero-qr-card::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, rgba(98, 107, 59, 0.2), rgba(232, 174, 60, 0.25));
+            border-radius: 26px;
+            z-index: -1;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 177, 79, 0.4);
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--primary-green);
-            color: var(--primary-green);
-            background: transparent;
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-green);
-            color: white;
-        }
-
-        .trust-text {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-            margin-top: 1rem;
-        }
-
-        .hero-qr {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .qr-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--light-gray);
-        }
-
-        .qr-code {
-            width: 240px;
-            height: 240px;
-            background: white;
-            border: 3px solid var(--primary-green);
+        .qr-brand-header {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            color: var(--text-gray);
+            gap: 0.5rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .qr-brand-header img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .qr-brand-header span {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            letter-spacing: -0.01em;
+        }
+
+        .qr-image-wrapper {
+            background: var(--text-white);
+            border: 1.5px solid rgba(61, 46, 20, 0.12);
+            border-radius: 14px;
+            padding: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1.15rem;
+        }
+
+        .qr-image-wrapper img {
+            display: block;
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
             border-radius: 8px;
         }
 
-        .qr-label {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin-top: 1rem;
+        .qr-caption {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            margin-bottom: 0.3rem;
         }
 
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-text p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .qr-code {
-                width: 180px;
-                height: 180px;
-            }
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--charcoal);
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto;
+        .qr-subtext {
+            font-size: 0.85rem;
+            color: rgba(61, 46, 20, 0.72);
+            font-weight: 600;
         }
 
         /* Problem Section */
-        .problem {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+        .problem-section {
+            background: var(--bg-cream);
         }
 
-        .problem-grid {
+        .cards-grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
         }
 
         .problem-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-gray);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2.15rem 1.85rem;
+            box-shadow: var(--shadow-warm);
             transition: all 0.3s ease;
-            border-left: 3px solid var(--yellow);
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .problem-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-            border-color: var(--border-gray);
+            box-shadow: var(--shadow-warm-hover);
+            border-color: var(--card-border-hover);
         }
 
-        .problem-card h3 {
-            color: var(--charcoal);
-            margin-bottom: 0.75rem;
-            font-size: 1.3rem;
-        }
-
-        .problem-card p {
-            color: var(--text-gray);
-            line-height: 1.7;
-        }
-
-        /* Solution Section */
-        .solution {
-            background: white;
-        }
-
-        .solution-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .solution-card {
-            background: white;
-            padding: 2.5rem 2rem;
+        .card-icon {
+            width: 48px;
+            height: 48px;
             border-radius: 12px;
-            text-align: center;
-            border: 1px solid var(--border-gray);
-            border-top: 2px solid var(--primary-green);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-        }
-
-        .solution-card:hover {
-            box-shadow: 0 8px 24px rgba(0, 177, 79, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .solution-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .solution-card h3 {
-            color: var(--charcoal);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .solution-card p {
-            color: var(--text-gray);
-            line-height: 1.7;
-        }
-
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
-            color: white;
-        }
-
-        .about .section-title h2,
-        .about .section-title p {
-            color: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--yellow);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            opacity: 0.95;
-        }
-
-        .about-features {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .about-features li {
-            padding: 0.8rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .about-features li:before {
-            content: "✓";
-            color: var(--yellow);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .about-image {
-            background: rgba(255, 255, 255, 0.1);
-            height: 300px;
-            border-radius: 12px;
+            background: rgba(98, 107, 59, 0.12);
+            color: var(--primary-olive);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
+            margin-bottom: 1.35rem;
+            border: 1px solid rgba(98, 107, 59, 0.18);
         }
 
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+
+        .problem-card h3 {
+            font-size: 1.22rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            margin-bottom: 0.75rem;
+            line-height: 1.35;
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            color: rgba(61, 46, 20, 0.8);
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-section {
+            background: linear-gradient(180deg, var(--card-light-cream) 0%, var(--bg-cream) 100%);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            margin-bottom: 3.5rem;
+        }
+
+        .step-card {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 18px;
+            padding: 2.25rem 2rem;
+            box-shadow: var(--shadow-warm);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            box-shadow: var(--shadow-warm-hover);
+            border-color: var(--primary-olive);
+        }
+
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: var(--primary-olive);
+            color: var(--text-white);
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 10px rgba(98, 107, 59, 0.25);
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            margin-bottom: 0.85rem;
+            line-height: 1.35;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            color: rgba(61, 46, 20, 0.8);
+            line-height: 1.65;
+        }
+
+        /* Flow Diagram */
+        .flow-diagram-container {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 22px;
+            padding: 2.75rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-warm);
+        }
+
+        .flow-diagram-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(61, 46, 20, 0.7);
+            margin-bottom: 1.85rem;
+        }
+
+        .flow-nodes-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .flow-node {
+            background: var(--text-white);
+            border: 1.5px solid rgba(61, 46, 20, 0.15);
+            padding: 1.1rem 1.6rem;
+            border-radius: 14px;
+            box-shadow: var(--shadow-warm);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            color: var(--heading-text);
+            font-size: 1rem;
+        }
+
+        /* Olive Card Fill with White Text */
+        .flow-node.highlight-node {
+            background: var(--primary-olive);
+            border-color: var(--primary-olive);
+            color: var(--text-white);
+            box-shadow: 0 6px 18px rgba(98, 107, 59, 0.28);
+        }
+
+        .flow-node.highlight-node .flow-node-icon {
+            color: var(--highlight-mustard);
+        }
+
+        .flow-logo-img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .flow-node-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-olive);
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--second-olive-gold);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: var(--bg-cream);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2.75rem;
+        }
+
+        .benefit-card {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 18px;
+            padding: 2.5rem 2.25rem;
+            box-shadow: var(--shadow-warm);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-olive);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-warm-hover);
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-card .card-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(98, 107, 59, 0.12);
+            color: var(--primary-olive);
+            border-radius: 14px;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            margin-bottom: 0.95rem;
+        }
+
+        .benefit-card p {
+            font-size: 1rem;
+            color: rgba(61, 46, 20, 0.82);
+            line-height: 1.65;
+        }
+
+        /* Callout: Olive green card with White text */
+        .benefit-callout {
+            background: var(--primary-olive);
+            border-radius: 16px;
+            padding: 1.45rem 2.25rem;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+            box-shadow: 0 6px 20px rgba(98, 107, 59, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .benefit-callout p {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: -0.01em;
+        }
+
+        /* Network / Who We Are Section */
+        .network-section {
+            background: linear-gradient(180deg, var(--card-light-cream) 0%, var(--bg-cream) 100%);
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .network-text h2 {
+            font-size: 2.45rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--heading-text);
+            margin-bottom: 1.35rem;
+            letter-spacing: -0.02em;
+        }
+
+        .network-body {
+            font-size: 1.15rem;
+            color: rgba(61, 46, 20, 0.82);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        .network-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .network-bullets li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--heading-text);
+            line-height: 1.5;
+        }
+
+        .bullet-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: rgba(98, 107, 59, 0.15);
+            color: var(--primary-olive);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            font-weight: 800;
+        }
+
+        /* Phase Tracker Card: Olive card fill with White text */
+        .phase-card {
+            background: var(--primary-olive);
+            color: var(--text-white);
+            border-radius: 22px;
+            padding: 2.65rem 2.25rem;
+            box-shadow: 0 10px 30px rgba(98, 107, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .phase-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 1.85rem;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .phase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            position: relative;
+        }
+
+        .phase-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            position: relative;
+        }
+
+        .phase-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.8);
+            border: 2px solid transparent;
+        }
+
+        .phase-item.active .phase-indicator {
+            background: var(--highlight-mustard);
+            color: var(--text-dark-brown);
+            border-color: var(--text-white);
+            box-shadow: 0 0 12px rgba(232, 174, 60, 0.8);
+        }
+
+        .phase-info h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .phase-badge-now {
+            background: var(--highlight-mustard);
+            color: var(--text-dark-brown);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            letter-spacing: 0.05em;
+        }
+
+        .phase-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
         }
 
         /* FAQ Section */
-        .faq {
-            background: var(--light-gray);
+        .faq-section {
+            background: var(--bg-cream);
         }
 
-        .faq-container {
-            max-width: 800px;
+        .faq-accordion {
+            max-width: 820px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
         }
 
         .faq-item {
-            background: white;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-warm);
+            transition: border-color 0.2s ease;
         }
 
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
+        .faq-item.active {
+            border-color: var(--primary-olive);
+        }
+
+        .faq-button {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 1.45rem 1.85rem;
+            text-align: left;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--heading-text);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            color: var(--charcoal);
-            transition: background 0.3s ease;
+            gap: 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
         }
 
-        .faq-question:hover {
-            background: var(--light-gray);
+        html[lang="ur"] .faq-button {
+            text-align: right;
         }
 
-        .faq-toggle {
-            font-size: 1.5rem;
-            color: var(--primary-green);
-            transition: transform 0.3s ease;
+        .faq-button:hover {
+            background: rgba(61, 46, 20, 0.03);
         }
 
-        .faq-item.active .faq-toggle {
+        .faq-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(98, 107, 59, 0.12);
+            color: var(--primary-olive);
+            flex-shrink: 0;
+            font-weight: 800;
+            transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .faq-item.active .faq-icon {
             transform: rotate(45deg);
+            background: var(--primary-olive);
+            color: var(--text-white);
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
-            background: var(--light-gray);
+            transition: max-height 0.35s ease, padding 0.3s ease;
+            background: var(--card-light-cream);
         }
 
         .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 300px;
+            padding: 0 1.85rem 1.6rem 1.85rem;
         }
 
         .faq-answer p {
-            color: var(--text-gray);
-            line-height: 1.8;
+            color: rgba(61, 46, 20, 0.82);
+            font-size: 0.98rem;
+            line-height: 1.7;
         }
 
-        /* Footer */
-        footer {
-            background: var(--charcoal);
-            color: white;
-            padding: 3rem 2rem;
+        /* Register Your Shop / Join Section */
+        .join-section {
+            background: linear-gradient(180deg, var(--card-light-cream) 0%, var(--bg-cream) 100%);
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .join-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .join-form-wrapper {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 22px;
+            padding: 2.65rem;
+            box-shadow: var(--shadow-warm);
+        }
+
+        .form-group {
+            margin-bottom: 1.35rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--heading-text);
+            margin-bottom: 0.45rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.1rem;
+            font-family: inherit;
+            font-size: 0.98rem;
+            color: var(--heading-text);
+            background: var(--text-white);
+            border: 1.5px solid rgba(61, 46, 20, 0.2);
+            border-radius: 10px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-olive);
+            box-shadow: 0 0 0 3px var(--focus-ring);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 95px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .form-success-alert {
+            display: none;
+            background: rgba(98, 107, 59, 0.14);
+            border: 1.5px solid var(--primary-olive);
+            color: var(--primary-olive);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        .join-info h3 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .join-info-desc {
+            font-size: 1.05rem;
+            color: rgba(61, 46, 20, 0.82);
+            line-height: 1.7;
             margin-bottom: 2rem;
         }
 
-        .footer-section h4 {
-            margin-bottom: 1rem;
-            color: var(--yellow);
+        .partner-card {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-left: 4px solid var(--highlight-mustard);
+            border-radius: 14px;
+            padding: 1.6rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-warm);
         }
 
-        .footer-section ul {
-            list-style: none;
+        .partner-card h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--heading-text);
+            margin-bottom: 0.35rem;
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.7rem;
+        .partner-card p {
+            font-size: 0.95rem;
+            color: rgba(61, 46, 20, 0.8);
+            line-height: 1.55;
+            margin-bottom: 0.85rem;
         }
 
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
+        .partner-link {
+            font-weight: 800;
+            color: var(--primary-olive);
             text-decoration: none;
-            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .footer-section a:hover {
-            color: var(--primary-green);
+        .partner-link:hover {
+            text-decoration: underline;
+            color: #525A31;
+        }
+
+        .contact-details-box {
+            background: var(--card-light-cream);
+            border: 1.5px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1.6rem;
+            box-shadow: var(--shadow-warm);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.95rem;
+            color: var(--heading-text);
+            margin-bottom: 0.9rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item-icon {
+            color: var(--primary-olive);
+            display: flex;
+            align-items: center;
+        }
+
+        /* Footer */
+        footer.site-footer {
+            background: var(--text-dark-brown);
+            color: var(--bg-cream);
+            padding: 4.5rem 0 2.5rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-brand .brand-logo {
+            color: var(--text-white);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-brand .brand-logo-img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .footer-brand .brand-text {
+            color: var(--text-white);
+        }
+
+        .footer-brand .brand-text span {
+            color: var(--highlight-mustard);
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            color: rgba(247, 235, 211, 0.82);
+            line-height: 1.65;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 1.35rem;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+            color: rgba(247, 235, 211, 0.78);
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--highlight-mustard);
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(247, 235, 211, 0.15);
             padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        .footer-legal {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
+            align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
+            gap: 1.25rem;
+            font-size: 0.88rem;
+            color: rgba(247, 235, 211, 0.6);
         }
 
-        .footer-legal a {
-            color: var(--primary-green);
+        .footer-bottom a {
+            color: rgba(247, 235, 211, 0.75);
             text-decoration: none;
-            transition: color 0.3s ease;
         }
 
-        .footer-legal a:hover {
-            color: var(--yellow);
-            text-decoration: underline;
+        .footer-bottom a:hover {
+            color: var(--highlight-mustard);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-subhead {
+                margin: 0 auto 2.25rem auto;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .trust-strip {
+                justify-content: center;
+            }
+
+            .cards-grid-3,
+            .steps-container,
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .network-grid,
+            .join-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .footer-legal {
+            .section {
+                padding: 3.5rem 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2.35rem;
+            }
+
+            .hero-subhead {
+                font-size: 1.1rem;
+            }
+
+            nav.nav-links {
+                display: none;
+                position: absolute;
+                top: 78px;
+                left: 0;
+                right: 0;
+                background: var(--card-light-cream);
                 flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(61, 46, 20, 0.12);
+                border-bottom: 1.5px solid var(--card-border);
+                gap: 1.25rem;
+            }
+
+            nav.nav-links.mobile-open {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .cards-grid-3,
+            .steps-container,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-nodes-wrapper {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .flow-arrow svg {
+                transform: rotate(90deg);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
-        }
 
-        /* Utility */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary-green), var(--yellow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Animations */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+            .join-form-wrapper {
+                padding: 1.75rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
 
-        .fade-in {
-            animation: slideInUp 0.6s ease-out;
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
-    <meta name="google-site-verification" content="xOXVzs5maBCvJG-32DNAoo2DD7XLhiK22ZhMvuckx2A" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">Barqat</div>
-        <ul>
-            <li><a href="#problem">Problem</a></li>
-            <li><a href="#solution">Solution</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Smart Order Tracking for <span>Modern Retailers</span></h1>
-                <p>Real-time order management, GPS tracking, and instant notifications. Streamline your retail operations with Barqat.</p>
-                
-                <div class="hero-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=com.barqat.app" class="btn btn-primary" download>Download Now</a>
-                    <button class="btn btn-secondary">Learn More</button>
-                </div>
+    <!-- Sticky Navigation -->
+    <header class="site-header" id="top">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#top" class="brand-logo" aria-label="Barqat Home">
+                    <img src="barqat_logo.png" alt="Barqat Logo" class="brand-logo-img" width="42" height="42">
+                    <div class="brand-text">Barqat<span>.</span></div>
+                </a>
 
-                <div class="trust-text">
-                    ✓ 99.9% uptime guarantee<br>
-                    ✓ Enterprise-grade security<br>
-                    ✓ Trusted by retailers in Pakistan
-                </div>
-            </div>
+                <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
+                    <a href="#problem" data-i18n="nav.problem">Problem</a>
+                    <a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
+                    <a href="#benefits" data-i18n="nav.benefits">Benefits</a>
+                    <a href="#network" data-i18n="nav.network">Network</a>
+                    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+                </nav>
 
-            <div class="hero-qr">
-                <div class="qr-box">
-                    <img src="qr.png" alt="Barqat App QR Code" style="width: 240px; height: 240px; border-radius: 8px;">
-                    <div class="qr-label">Scan to Download<br>for Android</div>
+                <div class="nav-actions">
+                    <a href="#join" class="btn btn-primary" data-i18n="nav.register">Register Your Shop</a>
+                    <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Problem Section -->
-    <section class="problem" id="problem">
-        <div class="section">
-            <div class="section-title">
-                <h2>Challenges Retailers Face</h2>
-                <p>Managing retail operations without proper tools is costly, time-consuming, and error-prone</p>
-            </div>
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text">
+                        <h1 data-i18n="hero.headline">Your Shop's Entire Supply. <span class="highlight">One App.</span> One Trusted Network.</h1>
+                        <p class="hero-subhead" data-i18n="hero.subhead">Barqat connects neighbourhood retailers directly with authorized FMCG distributors, so you get better prices, reliable stock, and more customers, starting in Hayatabad, Peshawar.</p>
+                        
+                        <div class="hero-cta-group">
+                            <a href="#join" class="btn btn-primary btn-lg" data-i18n="hero.ctaPrimary">Register Your Shop</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.barqat.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" id="playStoreHeroBtn" data-i18n="hero.ctaSecondary">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                Download the App
+                            </a>
+                        </div>
 
-            <div class="problem-grid">
-                <div class="problem-card fade-in">
-                    <h3>📦 No Order Visibility</h3>
-                    <p>Retailers lose track of orders in transit, leading to missed deliveries and customer dissatisfaction.</p>
-                </div>
+                        <div class="trust-strip">
+                            <div class="trust-item">
+                                <span class="trust-dot"></span>
+                                <span data-i18n="hero.trust1">Backed by 12 authorized FMCG distributors</span>
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-dot"></span>
+                                <span data-i18n="hero.trust2">No middlemen. No hidden inventory games.</span>
+                            </div>
+                            <div class="trust-item">
+                                <span class="trust-dot"></span>
+                                <span data-i18n="hero.trust3">Launching in Hayatabad, Peshawar</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="problem-card fade-in">
-                    <h3>⏰ Manual Coordination</h3>
-                    <p>Coordinating with multiple riders and employees wastes time and creates communication bottlenecks.</p>
-                </div>
-
-                <div class="problem-card fade-in">
-                    <h3>📊 Limited Analytics</h3>
-                    <p>Without data insights, retailers can't optimize their operations or understand customer behavior.</p>
-                </div>
-
-                <div class="problem-card fade-in">
-                    <h3>💔 Poor Customer Experience</h3>
-                    <p>Customers expect real-time updates. Outdated systems can't deliver this, hurting your brand.</p>
-                </div>
-
-                <div class="problem-card fade-in">
-                    <h3>🔓 Security Risks</h3>
-                    <p>Manual record-keeping and unsecured systems put customer data and business operations at risk.</p>
-                </div>
-
-                <div class="problem-card fade-in">
-                    <h3>📈 Scaling Difficulties</h3>
-                    <p>Current processes break down as your business grows, making expansion costly and complex.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="solution" id="solution">
-        <div class="section">
-            <div class="section-title">
-                <h2>Barqat's <span class="gradient-text">Solution</span></h2>
-                <p>Everything you need to modernize your retail operations in one powerful platform</p>
-            </div>
-
-            <div class="solution-grid">
-                <div class="solution-card fade-in">
-                    <div class="solution-icon">📍</div>
-                    <h3>Real-Time GPS Tracking</h3>
-                    <p>Track every order and rider in real-time with precise location updates. Know exactly where everything is.</p>
-                </div>
-
-                <div class="solution-card fade-in">
-                    <div class="solution-icon">🔔</div>
-                    <h3>Instant Notifications</h3>
-                    <p>Push notifications keep your team and customers informed at every step of the process.</p>
-                </div>
-
-                <div class="solution-card fade-in">
-                    <div class="solution-icon">👥</div>
-                    <h3>Multi-Role Management</h3>
-                    <p>Separate access for retailers, storekeepers, riders, and admins with role-based permissions.</p>
-                </div>
-
-                <div class="solution-card fade-in">
-                    <div class="solution-icon">📊</div>
-                    <h3>Analytics & Insights</h3>
-                    <p>Understand your operations with detailed analytics on orders, performance, and customer behavior.</p>
-                </div>
-
-                <div class="solution-card fade-in">
-                    <div class="solution-icon">🔒</div>
-                    <h3>Bank-Grade Security</h3>
-                    <p>JWT-based authentication, encrypted data storage, and compliance with GDPR & CCPA standards.</p>
-                </div>
-
-                <div class="solution-card fade-in">
-                    <div class="solution-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Built on modern tech stack with 99.9% uptime guarantee. Experience zero lag, zero downtime.</p>
+                    <div class="hero-qr">
+                        <div class="hero-qr-card">
+                            <div class="qr-brand-header">
+                                <img src="barqat_logo.png" alt="Barqat" width="28" height="28">
+                                <span>Barqat Retailer Network</span>
+                            </div>
+                            <div class="qr-image-wrapper">
+                                <img src="qr.png" alt="Scan to download Barqat Android App" width="200" height="200">
+                            </div>
+                            <div class="qr-caption" data-i18n="hero.qrCaption">Scan to download for Android</div>
+                            <div class="qr-subtext" data-i18n="hero.qrSubtext">Available now on Google Play</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section">
-            <div class="section-title">
-                <h2>About Barqat</h2>
-                <p>Transforming retail operations across Pakistan</p>
+        <!-- 2. Problem Section -->
+        <section class="section problem-section" id="problem">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="problem.tag">Retailer Challenges</span>
+                    <h2 data-i18n="problem.title">What Dukaandaars Deal With Today</h2>
+                    <p data-i18n="problem.subtitle">Running a neighbourhood store shouldn't mean endless friction, high purchase costs, and missed sales opportunities.</p>
+                </div>
+
+                <div class="cards-grid-3">
+                    <!-- Card 1 -->
+                    <div class="problem-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="problem.c1Title">Multiple suppliers, multiple calls</h3>
+                        <p data-i18n="problem.c1Body">Ordering from many salesmen and distributors means constant calls, missed visits, and stock-outs.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="problem-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="problem.c2Title">Higher purchase cost</h3>
+                        <p data-i18n="problem.c2Body">Small shops buy in small quantities and pay more per unit than large chains do.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="problem-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="9" y1="15" x2="15" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="problem.c3Title">Order-booker leakage</h3>
+                        <p data-i18n="problem.c3Body">Manual order-taking leads to wrong quantities, missed items, and disputes.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="problem-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="problem.c4Title">No visibility</h3>
+                        <p data-i18n="problem.c4Body">No clear record of what was ordered, what was delivered, and what you owe.</p>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="problem-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="problem.c5Title">Limited reach</h3>
+                        <p data-i18n="problem.c5Body">Your customers are your walk-ins only. Shoppers who order from home go elsewhere.</p>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="problem-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3h18v18H3zM3 9h18M9 21V9"></path>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="problem.c6Title">Shop looks and merchandising</h3>
+                        <p data-i18n="problem.c6Body">Few retailers get help presenting their shop the way modern stores do.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Why Choose Barqat?</h3>
-                    <p>Barqat was built by retail experts who understand the unique challenges of managing orders, logistics, and customer relationships in Pakistan's dynamic market.</p>
-                    
-                    <p>We've deployed our platform across hundreds of retail locations, helping businesses of all sizes streamline operations and scale confidently.</p>
+        <!-- 3. How It Works Section -->
+        <section class="section how-section" id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="how.tag">Simple Process</span>
+                    <h2 data-i18n="how.title">How Barqat Works</h2>
+                    <p data-i18n="how.subtitle">We partner with you in person to simplify purchasing, modernize your shop, and increase your revenue.</p>
+                </div>
 
-                    <ul class="about-features">
-                        <li>99.9% platform uptime</li>
-                        <li>Real-time GPS tracking</li>
-                        <li>Multi-language support (Urdu & English)</li>
-                        <li>24/7 customer support</li>
-                        <li>Enterprise-grade infrastructure</li>
-                        <li>Secure data handling & encryption</li>
+                <div class="steps-container">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-badge">1</div>
+                        <h3 data-i18n="how.s1Title">Join the Barqat network</h3>
+                        <p data-i18n="how.s1Body">We visit your shop, understand your sales and needs, and onboard you in person.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-badge">2</div>
+                        <h3 data-i18n="how.s2Title">Order your supply through the Barqat app</h3>
+                        <p data-i18n="how.s2Body">Top-selling products from authorized distributors, one app, itemized invoices for every order.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-badge">3</div>
+                        <h3 data-i18n="how.s3Title">Grow with home delivery</h3>
+                        <p data-i18n="how.s3Body">Once the network is stable, nearby customers order through Barqat and your shop fulfils and earns on those sales.</p>
+                    </div>
+                </div>
+
+                <!-- Simple Flow Diagram with prominent Barqat Platform node -->
+                <div class="flow-diagram-container">
+                    <div class="flow-diagram-title" data-i18n="how.flowTitle">The Barqat Asset-Light Ecosystem</div>
+                    <div class="flow-nodes-wrapper">
+                        <div class="flow-node">
+                            <span class="flow-node-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="3" width="15" height="13"></rect>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
+                                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                </svg>
+                            </span>
+                            <span data-i18n="how.flow1">Authorized Distributors</span>
+                        </div>
+
+                        <div class="flow-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+
+                        <!-- Highlighted Barqat Node with Official Logo -->
+                        <div class="flow-node highlight-node">
+                            <img src="barqat_logo.png" alt="Barqat" class="flow-logo-img" width="24" height="24">
+                            <span data-i18n="how.flow2">Barqat Platform</span>
+                        </div>
+
+                        <div class="flow-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="flow-node">
+                            <span class="flow-node-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </span>
+                            <span data-i18n="how.flow3">Your Shop</span>
+                        </div>
+
+                        <div class="flow-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+
+                        <div class="flow-node">
+                            <span class="flow-node-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </span>
+                            <span data-i18n="how.flow4">Home Customers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Benefits Section -->
+        <section class="section benefits-section" id="benefits">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="benefits.tag">Your Advantage</span>
+                    <h2 data-i18n="benefits.title">Benefits for Retailers</h2>
+                    <p data-i18n="benefits.subtitle">Designed from the ground up so your shop thrives against large chains and online aggregators.</p>
+                </div>
+
+                <div class="benefits-grid">
+                    <!-- Benefit 1 -->
+                    <div class="benefit-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="benefits.b1Title">More sales</h3>
+                        <p data-i18n="benefits.b1Body">Reach home customers in your area through Barqat's consumer ordering, on top of your walk-in trade.</p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="benefit-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                                <line x1="12" y1="6" x2="12" y2="8"></line>
+                                <line x1="12" y1="16" x2="12" y2="18"></line>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="benefits.b2Title">Better prices</h3>
+                        <p data-i18n="benefits.b2Body">Bulk purchasing through the network gets you products at lower cost than buying alone.</p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="benefit-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="benefits.b3Title">A model shop</h3>
+                        <p data-i18n="benefits.b3Body">Barqat invests in merchandising and a modern, organized shop look for network retailers.</p>
+                    </div>
+                </div>
+
+                <!-- Olive Card with White Text -->
+                <div class="benefit-callout">
+                    <p data-i18n="benefits.callout">Retailers share in the profit from day one.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Network / Who We Are Section -->
+        <section class="section network-section" id="network">
+            <div class="container">
+                <div class="network-grid">
+                    <div class="network-text">
+                        <span class="section-tag" data-i18n="network.tag">Who We Are</span>
+                        <h2 data-i18n="network.title">Built With the People Who Supply Pakistan's Shops</h2>
+                        <p class="network-body" data-i18n="network.body">Barqat is built by a consortium of 12 authorized FMCG distributors together with a technology team from Pakistan. Because distributors are co-founders, not outside vendors, our incentives are aligned with yours: we only grow when your shop grows.</p>
+
+                        <ul class="network-bullets">
+                            <li>
+                                <span class="bullet-icon">✓</span>
+                                <span data-i18n="network.b1">Asset-light, no warehouse games on your shelf</span>
+                            </li>
+                            <li>
+                                <span class="bullet-icon">✓</span>
+                                <span data-i18n="network.b2">Authorized distributor stock only</span>
+                            </li>
+                            <li>
+                                <span class="bullet-icon">✓</span>
+                                <span data-i18n="network.b3">Itemized invoice for every sale, reconciled every evening</span>
+                            </li>
+                            <li>
+                                <span class="bullet-icon">✓</span>
+                                <span data-i18n="network.b4">Retailers carefully selected for a strong fit</span>
+                            </li>
+                            <li>
+                                <span class="bullet-icon">✓</span>
+                                <span data-i18n="network.b5">Urdu and English support</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase Tracker: Olive Card Fill with White Text -->
+                    <div class="phase-card">
+                        <h3 data-i18n="network.phaseHeader">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Rollout Phases
+                        </h3>
+
+                        <div class="phase-list">
+                            <!-- Phase 1 -->
+                            <div class="phase-item active">
+                                <div class="phase-indicator">1</div>
+                                <div class="phase-info">
+                                    <h4>
+                                        <span data-i18n="network.p1Title">Phase 1: Retailer Supply</span>
+                                        <span class="phase-badge-now" data-i18n="network.nowBadge">Now</span>
+                                    </h4>
+                                    <p data-i18n="network.p1Desc">Hayatabad, Peshawar. Stabilizing 80% store supply via authorized distributors.</p>
+                                </div>
+                            </div>
+
+                            <!-- Phase 2 -->
+                            <div class="phase-item">
+                                <div class="phase-indicator">2</div>
+                                <div class="phase-info">
+                                    <h4 data-i18n="network.p2Title">Phase 2: Home Delivery</h4>
+                                    <p data-i18n="network.p2Desc">Consumer ordering fulfilled directly through our established neighbourhood partner stores.</p>
+                                </div>
+                            </div>
+
+                            <!-- Phase 3 -->
+                            <div class="phase-item">
+                                <div class="phase-indicator">3</div>
+                                <div class="phase-info">
+                                    <h4 data-i18n="network.p3Title">Phase 3: More Cities</h4>
+                                    <p data-i18n="network.p3Desc">Expanding the consortium model to further urban retail hubs across Pakistan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FAQ Section -->
+        <section class="section faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag" data-i18n="faq.tag">Questions & Answers</span>
+                    <h2 data-i18n="faq.title">Frequently Asked Questions</h2>
+                    <p data-i18n="faq.subtitle">Clear answers about joining the Barqat network and our partnership model.</p>
+                </div>
+
+                <div class="faq-accordion" id="faqAccordion">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q1">Who is Barqat for?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a1">Neighbourhood grocery and general stores (dukaandaars) in Pakistan. We are starting in Hayatabad, Peshawar.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q2">Do I have to buy only from Barqat?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a2">No. Barqat aims to supply most of your stock, around 80%, but you stay in control of your shop.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q3">What does it cost to join?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a3">There is no joining fee for selected retailers. Barqat earns a small margin on wholesale supply and shares part of it with the retailers in the network.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q4">How are retailers selected?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a4">We meet every shopkeeper in person to understand your daily sales, your goals, and whether Barqat is a good fit. Selected retailers are onboarded first.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q5">When does home delivery start?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a5">After the retailer network is stable. We will not rush it: reliable supply comes first.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q6">Which phones does the app work on?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a6">Android right now. Download it from Google Play.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span data-i18n="faq.q7">How do I join?</span>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="faq.a7">Fill the form below, and our team will visit your shop.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Join / Contact Section -->
+        <section class="section join-section" id="join">
+            <div class="container">
+                <div class="join-grid">
+                    <div class="join-form-wrapper">
+                        <div class="form-success-alert" id="formSuccessAlert" role="alert" data-i18n="join.success">
+                            Thank you. Our team will contact you to visit your shop.
+                        </div>
+
+                        <form id="retailerRegisterForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="shopName" data-i18n="join.labelShop">Shop Name *</label>
+                                    <input type="text" id="shopName" name="shopName" class="form-control" placeholder="e.g. Madina Super Store" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ownerName" data-i18n="join.labelOwner">Owner Name *</label>
+                                    <input type="text" id="ownerName" name="ownerName" class="form-control" placeholder="e.g. Muhammad Ali" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phoneNumber" data-i18n="join.labelPhone">Phone / WhatsApp Number *</label>
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="0300 1234567" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shopArea" data-i18n="join.labelArea">Area *</label>
+                                    <input type="text" id="shopArea" name="shopArea" class="form-control" value="Hayatabad, Peshawar" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dailySales" data-i18n="join.labelSales">Approx. Daily Sales</label>
+                                <select id="dailySales" name="dailySales" class="form-control">
+                                    <option value="" data-i18n="join.salesOpt0">Select daily sales range</option>
+                                    <option value="Under PKR 25,000" data-i18n="join.salesOpt1">Under PKR 25,000</option>
+                                    <option value="PKR 25,000 - 50,000" data-i18n="join.salesOpt2">PKR 25,000 - 50,000</option>
+                                    <option value="PKR 50,000 - 100,000" data-i18n="join.salesOpt3">PKR 50,000 - 100,000</option>
+                                    <option value="Above PKR 100,000" data-i18n="join.salesOpt4">Above PKR 100,000</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="shopMessage" data-i18n="join.labelMessage">Message (Optional)</label>
+                                <textarea id="shopMessage" name="shopMessage" class="form-control" placeholder="Tell us about your shop or specific distributor brands you frequently stock..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="submitFormBtn" data-i18n="join.btnSubmit">
+                                Submit Registration
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="join-info">
+                        <span class="section-tag" data-i18n="join.tag">Get In Touch</span>
+                        <h3 data-i18n="join.title">Register Your Shop</h3>
+                        <p class="join-info-desc" data-i18n="join.desc">We meet every retailer in person. Fill out this quick form and a Barqat field representative will visit your shop in Hayatabad to walk you through the app and start onboarding.</p>
+
+                        <div class="partner-card">
+                            <h4 data-i18n="join.distributorTitle">Distributor or Investor?</h4>
+                            <p data-i18n="join.distributorText">Distributor or investor? Reach out and we will share our plan.</p>
+                            <a href="mailto:partners@barqat.com.pk" id="partnerEmailLink" class="partner-link">
+                                <span data-i18n="join.partnerAction">Connect with Leadership</span> →
+                            </a>
+                        </div>
+
+                        <div class="contact-details-box">
+                            <div class="contact-item">
+                                <span class="contact-item-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </span>
+                                <span>Email: <strong id="contactEmailDisplay">info@barqat.com.pk</strong></span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-item-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </span>
+                                <span id="contactAddressDisplay">Hayatabad, Peshawar, Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 8. Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#top" class="brand-logo" aria-label="Barqat">
+                        <img src="barqat_logo.png" alt="Barqat Logo" class="brand-logo-img" width="44" height="44">
+                        <div class="brand-text">Barqat<span>.</span></div>
+                    </a>
+                    <p class="footer-tagline" data-i18n="footer.tagline">
+                        Barqat. Supply, sales, and growth for Pakistan's neighbourhood retailers.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer.colProduct">Product</h4>
+                    <ul>
+                        <li><a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a></li>
+                        <li><a href="#benefits" data-i18n="nav.benefits">Benefits</a></li>
+                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
                     </ul>
                 </div>
 
-                <div class="about-image">
-                    <svg viewBox="0 0 200 200" style="width: 100%; height: 100%; opacity: 0.9;">
-                        <defs>
-                            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:rgba(255,209,102,0.3);stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:rgba(0,177,79,0.3);stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="100" r="80" fill="url(#grad)"/>
-                        <path d="M 100 50 L 120 100 L 100 150 L 80 100 Z" stroke="white" stroke-width="2" fill="none"/>
-                        <circle cx="100" cy="100" r="15" fill="white"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="section">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about Barqat</p>
-            </div>
-
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How much does Barqat cost?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Barqat offers flexible pricing plans based on your business size and needs. We have options for small retailers, medium-sized chains, and enterprise solutions. Contact us for a custom quote tailored to your operations.</p>
-                    </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.colCompany">Company</h4>
+                    <ul>
+                        <li><a href="#network" data-i18n="nav.network">The Network</a></li>
+                        <li><a href="#join" data-i18n="nav.register">Register Your Shop</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.barqat.app" target="_blank" rel="noopener noreferrer" data-i18n="footer.playStore">Download Android App</a></li>
+                    </ul>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is my data secure?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely. Barqat uses bank-grade encryption, secure JWT authentication, and follows GDPR and CCPA compliance standards. All data is stored securely on PostgreSQL with regular backups and security audits.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do you support both Android and iOS?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! Barqat is available on both Android and iOS platforms. We maintain feature parity across both platforms and release updates simultaneously to ensure consistent experiences.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What if I need custom features?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We work with enterprise clients to implement custom features. Our development team can extend Barqat to fit your specific workflow and business requirements. Contact our sales team to discuss options.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How long does implementation take?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Most retailers are up and running within 2-4 weeks. This includes onboarding, training, data migration, and testing. Our dedicated support team will guide you through every step of the process.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is there a free trial available?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! We offer a 30-day free trial with full access to all features. No credit card required. Experience Barqat firsthand and see how it can transform your retail operations.</p>
-                    </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.colLegal">Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service" data-i18n="footer.terms">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Barqat</h4>
-                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">Smart order tracking for modern retailers across Pakistan.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Barqat. All rights reserved.</p>
+                <p>Hayatabad, Peshawar &bull; FMCG Retailer Network</p>
             </div>
-
-            <div class="footer-section">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="#problem">Features</a></li>
-                    <li><a href="#solution">Solutions</a></li>
-                    <li><a href="#faq">FAQs</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Status</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="footer-legal">
-                <a href="/privacy-policy" target="_blank">Privacy Policy</a>
-                <a href="/terms-of-service" target="_blank">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
-            </div>
-            <p>&copy; 2025 Barqat. All rights reserved. | Smart Retail Made Simple</p>
         </div>
     </footer>
 
+    <!-- Configuration Script -->
+    <script src="config.js"></script>
+
+    <!-- Page Logic & Lightweight i18n Dictionary -->
     <script>
-        // FAQ Toggle Functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
+        // Minimal operational logs for runtime diagnostics
+        console.log("[Barqat] Initializing marketing website script with warm olive/cream palette...");
 
-        // Smooth scroll for nav links
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+        // Lightweight i18n structure (English populated, Urdu ready for verified translation copy)
+        const I18N = {
+            en: {
+                "nav.problem": "Problem",
+                "nav.howItWorks": "How It Works",
+                "nav.benefits": "Benefits",
+                "nav.network": "Network",
+                "nav.faq": "FAQ",
+                "nav.register": "Register Your Shop",
+                "hero.headline": "Your Shop's Entire Supply. <span class=\"highlight\">One App.</span> One Trusted Network.",
+                "hero.subhead": "Barqat connects neighbourhood retailers directly with authorized FMCG distributors, so you get better prices, reliable stock, and more customers, starting in Hayatabad, Peshawar.",
+                "hero.ctaPrimary": "Register Your Shop",
+                "hero.ctaSecondary": "Download the App",
+                "hero.trust1": "Backed by 12 authorized FMCG distributors",
+                "hero.trust2": "No middlemen. No hidden inventory games.",
+                "hero.trust3": "Launching in Hayatabad, Peshawar",
+                "hero.qrCaption": "Scan to download for Android",
+                "hero.qrSubtext": "Available now on Google Play",
+                "problem.tag": "Retailer Challenges",
+                "problem.title": "What Dukaandaars Deal With Today",
+                "problem.subtitle": "Running a neighbourhood store shouldn't mean endless friction, high purchase costs, and missed sales opportunities.",
+                "problem.c1Title": "Multiple suppliers, multiple calls",
+                "problem.c1Body": "Ordering from many salesmen and distributors means constant calls, missed visits, and stock-outs.",
+                "problem.c2Title": "Higher purchase cost",
+                "problem.c2Body": "Small shops buy in small quantities and pay more per unit than large chains do.",
+                "problem.c3Title": "Order-booker leakage",
+                "problem.c3Body": "Manual order-taking leads to wrong quantities, missed items, and disputes.",
+                "problem.c4Title": "No visibility",
+                "problem.c4Body": "No clear record of what was ordered, what was delivered, and what you owe.",
+                "problem.c5Title": "Limited reach",
+                "problem.c5Body": "Your customers are your walk-ins only. Shoppers who order from home go elsewhere.",
+                "problem.c6Title": "Shop looks and merchandising",
+                "problem.c6Body": "Few retailers get help presenting their shop the way modern stores do.",
+                "how.tag": "Simple Process",
+                "how.title": "How Barqat Works",
+                "how.subtitle": "We partner with you in person to simplify purchasing, modernize your shop, and increase your revenue.",
+                "how.s1Title": "Join the Barqat network",
+                "how.s1Body": "We visit your shop, understand your sales and needs, and onboard you in person.",
+                "how.s2Title": "Order your supply through the Barqat app",
+                "how.s2Body": "Top-selling products from authorized distributors, one app, itemized invoices for every order.",
+                "how.s3Title": "Grow with home delivery",
+                "how.s3Body": "Once the network is stable, nearby customers order through Barqat and your shop fulfils and earns on those sales.",
+                "how.flowTitle": "The Barqat Asset-Light Ecosystem",
+                "how.flow1": "Authorized Distributors",
+                "how.flow2": "Barqat Platform",
+                "how.flow3": "Your Shop",
+                "how.flow4": "Home Customers",
+                "benefits.tag": "Your Advantage",
+                "benefits.title": "Benefits for Retailers",
+                "benefits.subtitle": "Designed from the ground up so your shop thrives against large chains and online aggregators.",
+                "benefits.b1Title": "More sales",
+                "benefits.b1Body": "Reach home customers in your area through Barqat's consumer ordering, on top of your walk-in trade.",
+                "benefits.b2Title": "Better prices",
+                "benefits.b2Body": "Bulk purchasing through the network gets you products at lower cost than buying alone.",
+                "benefits.b3Title": "A model shop",
+                "benefits.b3Body": "Barqat invests in merchandising and a modern, organized shop look for network retailers.",
+                "benefits.callout": "Retailers share in the profit from day one.",
+                "network.tag": "Who We Are",
+                "network.title": "Built With the People Who Supply Pakistan's Shops",
+                "network.body": "Barqat is built by a consortium of 12 authorized FMCG distributors together with a technology team from Pakistan. Because distributors are co-founders, not outside vendors, our incentives are aligned with yours: we only grow when your shop grows.",
+                "network.b1": "Asset-light, no warehouse games on your shelf",
+                "network.b2": "Authorized distributor stock only",
+                "network.b3": "Itemized invoice for every sale, reconciled every evening",
+                "network.b4": "Retailers carefully selected for a strong fit",
+                "network.b5": "Urdu and English support",
+                "network.phaseHeader": "Rollout Phases",
+                "network.p1Title": "Phase 1: Retailer Supply",
+                "network.nowBadge": "Now",
+                "network.p1Desc": "Hayatabad, Peshawar. Stabilizing 80% store supply via authorized distributors.",
+                "network.p2Title": "Phase 2: Home Delivery",
+                "network.p2Desc": "Consumer ordering fulfilled directly through our established neighbourhood partner stores.",
+                "network.p3Title": "Phase 3: More Cities",
+                "network.p3Desc": "Expanding the consortium model to further urban retail hubs across Pakistan.",
+                "faq.tag": "Questions & Answers",
+                "faq.title": "Frequently Asked Questions",
+                "faq.subtitle": "Clear answers about joining the Barqat network and our partnership model.",
+                "faq.q1": "Who is Barqat for?",
+                "faq.a1": "Neighbourhood grocery and general stores (dukaandaars) in Pakistan. We are starting in Hayatabad, Peshawar.",
+                "faq.q2": "Do I have to buy only from Barqat?",
+                "faq.a2": "No. Barqat aims to supply most of your stock, around 80%, but you stay in control of your shop.",
+                "faq.q3": "What does it cost to join?",
+                "faq.a3": "There is no joining fee for selected retailers. Barqat earns a small margin on wholesale supply and shares part of it with the retailers in the network.",
+                "faq.q4": "How are retailers selected?",
+                "faq.a4": "We meet every shopkeeper in person to understand your daily sales, your goals, and whether Barqat is a good fit. Selected retailers are onboarded first.",
+                "faq.q5": "When does home delivery start?",
+                "faq.a5": "After the retailer network is stable. We will not rush it: reliable supply comes first.",
+                "faq.q6": "Which phones does the app work on?",
+                "faq.a6": "Android right now. Download it from Google Play.",
+                "faq.q7": "How do I join?",
+                "faq.a7": "Fill the form below, and our team will visit your shop.",
+                "join.tag": "Get In Touch",
+                "join.title": "Register Your Shop",
+                "join.desc": "We meet every retailer in person. Fill out this quick form and a Barqat field representative will visit your shop in Hayatabad to walk you through the app and start onboarding.",
+                "join.success": "Thank you. Our team will contact you to visit your shop.",
+                "join.labelShop": "Shop Name *",
+                "join.labelOwner": "Owner Name *",
+                "join.labelPhone": "Phone / WhatsApp Number *",
+                "join.labelArea": "Area *",
+                "join.labelSales": "Approx. Daily Sales",
+                "join.salesOpt0": "Select daily sales range",
+                "join.salesOpt1": "Under PKR 25,000",
+                "join.salesOpt2": "PKR 25,000 - 50,000",
+                "join.salesOpt3": "PKR 50,000 - 100,000",
+                "join.salesOpt4": "Above PKR 100,000",
+                "join.labelMessage": "Message (Optional)",
+                "join.btnSubmit": "Submit Registration",
+                "join.distributorTitle": "Distributor or Investor?",
+                "join.distributorText": "Distributor or investor? Reach out and we will share our plan.",
+                "join.partnerAction": "Connect with Leadership",
+                "footer.tagline": "Barqat. Supply, sales, and growth for Pakistan's neighbourhood retailers.",
+                "footer.colProduct": "Product",
+                "footer.colCompany": "Company",
+                "footer.colLegal": "Legal",
+                "footer.playStore": "Download Android App",
+                "footer.privacy": "Privacy Policy",
+                "footer.terms": "Terms of Service"
+            },
+            ur: {
+                // Placeholder keys matching the English structure so that verified Urdu copy
+                // can be inserted directly without code changes. Fallback is English.
+            }
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
+        let currentLang = "en";
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === "ur") ? "rtl" : "ltr";
+            
+            const btn = document.getElementById("langToggle");
+            if (btn) {
+                btn.textContent = (lang === "en") ? "اردو" : "English";
+            }
+
+            const dict = I18N[lang] || {};
+            const fallback = I18N.en;
+
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                const text = dict[key] || fallback[key];
+                if (text) {
+                    if (text.includes("<") && text.includes(">")) {
+                        el.innerHTML = text;
+                    } else {
+                        el.textContent = text;
+                    }
                 }
             });
-        }, observerOptions);
 
-        document.querySelectorAll('.problem-card, .solution-card').forEach(card => {
-            observer.observe(card);
+            console.log(`[Barqat] Language switched to: ${lang}`);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hydrate contact constants from config.js if present
+            try {
+                if (window.BARQAT_CONFIG && window.BARQAT_CONFIG.contact) {
+                    const c = window.BARQAT_CONFIG.contact;
+                    const emailEl = document.getElementById("contactEmailDisplay");
+                    const addrEl = document.getElementById("contactAddressDisplay");
+                    const partnerLink = document.getElementById("partnerEmailLink");
+
+                    if (emailEl && c.email) emailEl.textContent = c.email;
+                    if (addrEl && c.address) addrEl.textContent = c.address;
+                    if (partnerLink && c.partnerEmail) {
+                        partnerLink.href = `mailto:${c.partnerEmail}`;
+                    }
+                }
+            } catch (err) {
+                console.error("[Barqat Error] Error reading contact configuration:", err);
+            }
+
+            // Mobile menu toggle
+            const mobileBtn = document.getElementById("mobileMenuBtn");
+            const navLinks = document.getElementById("navLinks");
+            if (mobileBtn && navLinks) {
+                mobileBtn.addEventListener("click", () => {
+                    const isOpen = navLinks.classList.toggle("mobile-open");
+                    mobileBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+                });
+
+                navLinks.querySelectorAll("a").forEach(a => {
+                    a.addEventListener("click", () => {
+                        navLinks.classList.remove("mobile-open");
+                        mobileBtn.setAttribute("aria-expanded", "false");
+                    });
+                });
+            }
+
+            // Language Toggle click
+            const langToggleBtn = document.getElementById("langToggle");
+            if (langToggleBtn) {
+                langToggleBtn.addEventListener("click", () => {
+                    const nextLang = (currentLang === "en") ? "ur" : "en";
+                    applyLanguage(nextLang);
+                });
+            }
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll(".faq-item");
+            faqItems.forEach(item => {
+                const btn = item.querySelector(".faq-button");
+                if (btn) {
+                    btn.addEventListener("click", () => {
+                        const isActive = item.classList.contains("active");
+                        
+                        // Close other open accordion items
+                        faqItems.forEach(other => {
+                            if (other !== item) {
+                                other.classList.remove("active");
+                                const otherBtn = other.querySelector(".faq-button");
+                                if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+                            }
+                        });
+
+                        item.classList.toggle("active", !isActive);
+                        btn.setAttribute("aria-expanded", !isActive ? "true" : "false");
+                    });
+                }
+            });
+
+            // Registration Form Submission Handler
+            const form = document.getElementById("retailerRegisterForm");
+            const successAlert = document.getElementById("formSuccessAlert");
+            const submitBtn = document.getElementById("submitFormBtn");
+
+            if (form) {
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+
+                    const formData = {
+                        shopName: form.shopName ? form.shopName.value.trim() : "",
+                        ownerName: form.ownerName ? form.ownerName.value.trim() : "",
+                        phoneNumber: form.phoneNumber ? form.phoneNumber.value.trim() : "",
+                        shopArea: form.shopArea ? form.shopArea.value.trim() : "",
+                        dailySales: form.dailySales ? form.dailySales.value : "",
+                        shopMessage: form.shopMessage ? form.shopMessage.value.trim() : "",
+                        submittedAt: new Date().toISOString()
+                    };
+
+                    // Basic validation
+                    if (!formData.shopName || !formData.ownerName || !formData.phoneNumber) {
+                        alert("Please fill in the required fields: Shop Name, Owner Name, and Phone Number.");
+                        return;
+                    }
+
+                    console.log("[Barqat] Submitting registration form:", formData);
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = "Submitting...";
+                    }
+
+                    const endpoint = window.BARQAT_CONFIG && window.BARQAT_CONFIG.form && window.BARQAT_CONFIG.form.endpoint;
+
+                    if (endpoint && endpoint.trim().length > 0) {
+                        try {
+                            const res = await fetch(endpoint, {
+                                method: window.BARQAT_CONFIG.form.method || "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                body: JSON.stringify(formData)
+                            });
+
+                            if (!res.ok) {
+                                throw new Error(`Server responded with ${res.status}`);
+                            }
+                            console.log("[Barqat] Form successfully posted to remote endpoint:", endpoint);
+                        } catch (err) {
+                            console.error("[Barqat Error] Remote form submission failed:", err);
+                        }
+                    } else {
+                        console.log("[Barqat] Form handled locally (no remote endpoint configured in config.js).");
+                    }
+
+                    // Render success state
+                    if (successAlert) {
+                        successAlert.style.display = "block";
+                        successAlert.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                    form.reset();
+                    if (form.shopArea) {
+                        form.shopArea.value = "Hayatabad, Peshawar";
+                    }
+
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = (currentLang === "en") ? "Submit Registration" : "رجسٹریشن جمع کروائیں";
+                    }
+                });
+            }
         });
     </script>
 </body>
